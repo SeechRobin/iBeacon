@@ -1,7 +1,4 @@
 iBeacon
 =======
 
-Using Estimote iBeacon
-
-
-Experimenting with iBeacon
+Experimenting with iBeacon using Estimote iBeacons
