@@ -30,13 +30,10 @@
     self.data = @[@70];
     self.labels = @[@"dB"];
     
-    BeaconTableViewCell *tableViewCell = [[BeaconTableViewCell alloc] init];
-    tableViewCell.graphView.dataSource = self;
-    [tableViewCell.graphView draw];
-    
-    
-    self.graphV.dataSource = self;
-    [self.graphV draw];
+
+    //[self.graphV setDataSource:self];
+   // self.graphV.dataSource = self;
+    //[self.graphV draw];
 
 }
 
@@ -113,7 +110,7 @@
    cell.minorLabel.text = [NSString stringWithFormat:@"%ld", (long)beacon.minor.integerValue];
    //cell.accuraryLabel.text = [NSString stringWithFormat:@"%f", roundToN([beacon.distance floatValue], 2)];
    cell.accuraryLabel.text = [NSString stringWithFormat:@"%@", beacon.distance];
-   //cell.sstrengthLabel.text = [NSString stringWithFormat:@"%ld dB", (long)beacon.rssi ];
+   cell.sstrengthLabel.text = [NSString stringWithFormat:@"%ld dB", (long)beacon.rssi ];
 
     
    //cell.textLabel.text = proximityLabel;

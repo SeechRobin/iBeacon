@@ -13,8 +13,8 @@
 @synthesize minorLabel = _minorLabel;
 @synthesize accuraryLabel = _accuraryLabel;
 @synthesize proximityLabel = _proximityLabel;
-//@synthesize sstrengthLabel = _sstrengthLabel;
-@synthesize graphView = _graphView;
+@synthesize sstrengthLabel = _sstrengthLabel;
+//@synthesize graphView = _graphView;
 
 - (void)awakeFromNib {
     // Initialization code

@@ -19,7 +19,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *sstrengthLabel;
 
 
-@property (weak, nonatomic) IBOutlet GKBarGraph *graphView;
+
+
+
+//@property (weak, nonatomic) IBOutlet GKBarGraph *graphView;
 
 
 @end
