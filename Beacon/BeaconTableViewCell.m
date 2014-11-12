@@ -14,6 +14,7 @@
 @synthesize accuraryLabel = _accuraryLabel;
 @synthesize proximityLabel = _proximityLabel;
 @synthesize sstrengthLabel = _sstrengthLabel;
+@synthesize uuidLabel = _uuidLabel;
 //@synthesize graphView = _graphView;
 
 - (void)awakeFromNib {

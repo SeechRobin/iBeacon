@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "BeaconsTableViewController.h"
 #import  <CoreLocation/CoreLocation.h>
 
 @interface AppDelegate ()

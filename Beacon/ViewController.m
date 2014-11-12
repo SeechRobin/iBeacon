@@ -13,11 +13,14 @@
 #import "GraphKit.h"
 
 
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+float *signalFloat = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,7 +86,8 @@
     
     if (cell == nil) {
         cell = [[BeaconTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+       // cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.selectionStyle = UITableViewCellAccessoryCheckmark;
     }
     
     ESTBeacon *beacon = (ESTBeacon*)[self.beacons objectAtIndex:indexPath.row];
@@ -111,6 +115,7 @@
    //cell.accuraryLabel.text = [NSString stringWithFormat:@"%f", roundToN([beacon.distance floatValue], 2)];
    cell.accuraryLabel.text = [NSString stringWithFormat:@"%@", beacon.distance];
    cell.sstrengthLabel.text = [NSString stringWithFormat:@"%ld dB", (long)beacon.rssi ];
+   cell.uuidLabel.text = [NSString stringWithFormat:@"%@", beacon.proximityUUID.UUIDString];
 
     
    //cell.textLabel.text = proximityLabel;
@@ -118,6 +123,18 @@
 //    NSString *detailLabel = [NSString stringWithFormat:@"Accuracy: %f Major: %d, Minor: %d, RSSI: %d, UUID: %@",
 //                             beacon.accuracy,beacon.major.intValue, beacon.minor.intValue, (int)beacon.rssi, beacon.proximityUUID.UUIDString];
 //    cell.detailTextLabel.text = detailLabel;
+    unsigned long myLong = (long)beacon.rssi;
+    NSLog(@"%lu", myLong);
+    
+    
+    
+    
+    UIProgressView *view = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    
+   // [view setProgress:signalInt animated:NO];
+    //[cell.sstrengthLabel addSubview:view];
+    
+    
 
     return cell;
 }
@@ -133,5 +150,6 @@ float roundToN(float num, int decimals)
     for (; decimals; tenpow *= 10, decimals--);
     return round(tenpow * num) / tenpow;
 }
+
 
 @end

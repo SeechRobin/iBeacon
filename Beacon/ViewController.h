@@ -20,6 +20,5 @@
 @property (strong, nonatomic) IBOutlet GKBarGraph *graphV;
 
 
-
 @end
 

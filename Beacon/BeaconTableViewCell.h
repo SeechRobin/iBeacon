@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *sstrengthLabel;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *uuidLabel;
 
 
 
