@@ -12,16 +12,9 @@
 #import <ESTBeaconRegion.h>
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property CLProximity lastProximity;
-
-@property (nonatomic, strong) ESTBeacon        *beacon;
-@property (nonatomic, strong) ESTBeaconManager *beaconManager;
-@property (nonatomic, strong) ESTBeaconRegion  *beaconRegion;
-
 
 @end
 

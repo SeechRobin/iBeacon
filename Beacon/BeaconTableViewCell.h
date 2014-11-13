@@ -7,23 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GraphKit.h"
+
 
 @interface BeaconTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *majorLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *majorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *minorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *proximityLabel;
 @property (strong, nonatomic) IBOutlet UILabel *accuraryLabel;
-
 @property (strong, nonatomic) IBOutlet UILabel *sstrengthLabel;
-
-
 @property (strong, nonatomic) IBOutlet UILabel *uuidLabel;
 
-
-
-//@property (weak, nonatomic) IBOutlet GKBarGraph *graphView;
 
 
 @end

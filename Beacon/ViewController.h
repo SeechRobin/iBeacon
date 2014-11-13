@@ -7,18 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GraphKit.h"
+#import <ESTBeaconManager.h>
+#import <ESTBeaconRegion.h>
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, GKBarGraphDataSource>
 
-@property IBOutlet UITableView *tableView;
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, ESTBeaconDelegate, ESTBeaconManagerDelegate>
+
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property CLProximity lastProximity;
+
+@property (nonatomic, strong) ESTBeacon        *beacon;
+@property (nonatomic, strong) ESTBeaconManager *beaconManager;
+@property (nonatomic, strong) ESTBeaconRegion  *beaconRegion;
+
 @property (strong) NSArray *beacons;
+@property IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *stateButton;
 
-@property (nonatomic, strong) NSArray *data;
-@property (nonatomic, strong) NSArray *labels;
-
-@property (strong, nonatomic) IBOutlet GKBarGraph *graphV;
-
+- (IBAction)segmentSwitch:(id)sender;
 
 @end
 
