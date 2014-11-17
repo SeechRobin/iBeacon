@@ -15,6 +15,7 @@
 		000827B01A0CA84E000F1680 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000827AE1A0CA84E000F1680 /* LaunchScreen.xib */; };
 		000827BC1A0CA84E000F1680 /* BeaconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 000827BB1A0CA84E000F1680 /* BeaconTests.m */; };
 		009183A11A0CE57D002EF4B4 /* BeaconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 009183A01A0CE57D002EF4B4 /* BeaconTableViewCell.m */; };
+		00F765E51A19F07F005D4846 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F765E41A19F07F005D4846 /* MessagesViewController.m */; };
 		97D8704F96033697635B0CDF /* libPods-Beacon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D34F2CEF6328BF306F744F /* libPods-Beacon.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		000827BB1A0CA84E000F1680 /* BeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaconTests.m; sourceTree = "<group>"; };
 		0091839F1A0CE57D002EF4B4 /* BeaconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconTableViewCell.h; sourceTree = "<group>"; };
 		009183A01A0CE57D002EF4B4 /* BeaconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconTableViewCell.m; sourceTree = "<group>"; };
+		00F765E31A19F07F005D4846 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		00F765E41A19F07F005D4846 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		6918D30ED27914CB0A3CC390 /* Pods-Beacon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beacon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Beacon/Pods-Beacon.debug.xcconfig"; sourceTree = "<group>"; };
 		73D34F2CEF6328BF306F744F /* libPods-Beacon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Beacon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE8637E19BC1DD6933FCBE9 /* Pods-Beacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Beacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Beacon/Pods-Beacon.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				000827A41A0CA84E000F1680 /* AppDelegate.m */,
 				000827A61A0CA84E000F1680 /* ViewController.h */,
 				000827A71A0CA84E000F1680 /* ViewController.m */,
+				00F765E31A19F07F005D4846 /* MessagesViewController.h */,
+				00F765E41A19F07F005D4846 /* MessagesViewController.m */,
 				000827A91A0CA84E000F1680 /* Main.storyboard */,
 				0091839F1A0CE57D002EF4B4 /* BeaconTableViewCell.h */,
 				009183A01A0CE57D002EF4B4 /* BeaconTableViewCell.m */,
@@ -289,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				000827A81A0CA84E000F1680 /* ViewController.m in Sources */,
+				00F765E51A19F07F005D4846 /* MessagesViewController.m in Sources */,
 				000827A51A0CA84E000F1680 /* AppDelegate.m in Sources */,
 				000827A21A0CA84E000F1680 /* main.m in Sources */,
 				009183A11A0CE57D002EF4B4 /* BeaconTableViewCell.m in Sources */,

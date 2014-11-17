@@ -11,6 +11,8 @@
 #import  <CoreLocation/CoreLocation.h>
 #import "ESTBeacon.h"
 #import "AppDelegate.h"
+#import "AFNetworking.h"
+#import "MessagesViewController.h"
 
 
 @interface ViewController ()
@@ -26,6 +28,7 @@ static ESTBeaconRegion *region;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    NSLog(@"Inside View Did Load");
     
     NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];
     NSString *regionIdentifier = @"Estimote Region";
@@ -34,7 +37,6 @@ static ESTBeaconRegion *region;
     if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [self.locationManager requestAlwaysAuthorization];
     }
-    
     
     //    if([self.beaconManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
     //        [self.beaconManager requestAlwaysAuthorization];
@@ -49,6 +51,12 @@ static ESTBeaconRegion *region;
     ESTBeaconRegion *region = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconUUID identifier:regionIdentifier];
     [self.beaconManager startMonitoringForRegion:region];
     [self.beaconManager startRangingBeaconsInRegion:region];
+    
+    
+    [self loadJSONFromRemote];
+    
+    
+
 
 }
 
@@ -106,9 +114,6 @@ static ESTBeaconRegion *region;
 }
 
 
-
-
-
 #pragma mark - ESTBeaconManager delegate
 
 -(void)beaconManager:(ESTBeaconManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(ESTBeaconRegion *)region
@@ -117,7 +122,7 @@ static ESTBeaconRegion *region;
     self.beacons = beacons;
     [self.tableView reloadData];
     
-    NSLog(@"didRangeBeacons!");
+   // NSLog(@"didRangeBeacons!");
     NSString *message = @"Ello!";
     if([beacons count] > 0)
     {
@@ -145,7 +150,7 @@ static ESTBeaconRegion *region;
                 break;
         }
         
-        NSLog(@"Message--> %@", message);
+        //NSLog(@"Message--> %@", message);
         [self sendLocalNotificationWithMessage:message];
     }
 }
@@ -153,6 +158,7 @@ static ESTBeaconRegion *region;
 
 - (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
 {
+    NSLog(@"Did Enter Region");
     UILocalNotification *notification = [UILocalNotification new];
     notification.alertBody = @"Enter region notification";
     
@@ -161,6 +167,8 @@ static ESTBeaconRegion *region;
 
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
 {
+    NSLog(@"Did Exit Region");
+    
     UILocalNotification *notification = [UILocalNotification new];
     notification.alertBody = @"Exit region notification";
     
@@ -171,7 +179,6 @@ static ESTBeaconRegion *region;
 #pragma mark - UISegmentedControl
 - (IBAction)segmentSwitch:(id)sender {
     
-   
     UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
     NSInteger selectedSegment = segmentedControl.selectedSegmentIndex;
     
@@ -195,8 +202,76 @@ float roundToN(float num, int decimals)
 }
 
 -(void)sendLocalNotificationWithMessage:(NSString*)message {
+    NSLog(@"Send Local Notification");
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.alertBody = message;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
+// Get JSON response from remote web service using dummy url in urlString
+-(void)loadJSONFromRemote
+{
+    
+    //UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    //activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    //[self.view addSubview: activityIndicator];
+    
+    //[activityIndicator startAnimating]; //Show the user that loading is taking place
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://westwing.co.uk/data.json"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSLog(@"Going to URL ==> %@",url);
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"Start Loading");
+        
+//        NSDictionary *_dataset = [NSDictionary dictionaryWithDictionary:(NSDictionary*)responseObject];
+//        NSArray *campaigns = [[_dataset objectForKey:@"metadata"] objectForKey:@"upcoming"];
+//        
+//        NSLog(@"From campaings %@", campaigns);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
+                                                        message:@"The Actual Message!"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Finished Loading");
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error %@", error);
+        
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    
+    [operation start]; //Start operation
+    NSLog(@"Finished Loading");
+}
+
+
+
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"toMessage"]) {
+        NSLog(@"Using identifier");
+    }
 }
 @end

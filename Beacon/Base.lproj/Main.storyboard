@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lYw-5l-CPj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Messages View Controller-->
+        <scene sceneID="131-He-beu">
+            <objects>
+                <viewController id="1tL-MQ-OrR" customClass="MessagesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Zq-Wi-NbA"/>
+                        <viewControllerLayoutGuide type="bottom" id="pwb-LQ-Nk1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IyQ-gx-v8B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="A0L-cH-JgA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wqv-ca-TWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="147"/>
+        </scene>
+        <!--Beacons-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -21,21 +40,17 @@
                                 <color key="barTintColor" red="0.25098040699958801" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Beacons" id="qtq-e6-UnA">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="LYf-FX-MUy">
-                                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="feI-sG-HvI">
-                                                <rect key="frame" x="233" y="8" width="71" height="30"/>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="h8J-Dw-R7l">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PF9-eq-rV6">
+                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="Off"/>
-                                                    <segment title="On"/>
-                                                </segments>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
-                                                    <action selector="segmentSwitch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="3HI-q5-A7c"/>
+                                                    <action selector="buttonClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6S6-2N-SqZ"/>
                                                 </connections>
-                                            </segmentedControl>
-                                            <connections>
-                                                <action selector="segmentSwitch:" destination="vXZ-lx-hvc" id="WUH-re-O9x"/>
-                                            </connections>
+                                            </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -44,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MyIdentifier" rowHeight="136" id="hFx-n8-ajm" customClass="BeaconTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MyIdentifier" rowHeight="136" id="hFx-n8-ajm" customClass="BeaconTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="599" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hFx-n8-ajm" id="UmU-Vj-ndp">
@@ -125,6 +140,7 @@
                                             <outlet property="proximityLabel" destination="H8s-d2-rZN" id="Ezf-tT-hVL"/>
                                             <outlet property="sstrengthLabel" destination="9J7-eg-IFe" id="RJp-lj-Tit"/>
                                             <outlet property="uuidLabel" destination="L5c-au-PDe" id="6Vf-Jd-CLX"/>
+                                            <segue destination="1tL-MQ-OrR" kind="push" identifier="toMessage" id="t0E-3h-C91"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,14 +152,34 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Beacons" id="0hA-Jz-MR7"/>
                     <connections>
-                        <outlet property="stateButton" destination="LYf-FX-MUy" id="0Zj-x5-Mrh"/>
+                        <outlet property="getMessagesButton" destination="PF9-eq-rV6" id="nYG-Am-bmU"/>
                         <outlet property="tableView" destination="PhU-Kb-m3A" id="gJD-DC-3A8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="541" y="167"/>
+            <point key="canvasLocation" x="695" y="147"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="adx-zy-WnD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lYw-5l-CPj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CXR-2b-FBH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="el2-F3-89N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RMz-br-Eon" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="163" y="147"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

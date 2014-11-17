@@ -17,6 +17,7 @@
 @synthesize uuidLabel = _uuidLabel;
 
 
+
 - (void)awakeFromNib {
     // Initialization code
 }

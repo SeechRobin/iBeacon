@@ -24,8 +24,10 @@
 @property (strong) NSArray *beacons;
 @property IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *stateButton;
+@property (strong, nonatomic) IBOutlet UIButton *getMessagesButton;
 
 - (IBAction)segmentSwitch:(id)sender;
+
 
 @end
 
